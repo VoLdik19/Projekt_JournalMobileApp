@@ -7,20 +7,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list>
-    <ion-item>
-        <ion-label position="stacked">Description</ion-label>
-        <ion-textarea placeholder="Write your journal entry here..." id="journalDescription"></ion-textarea>
-    </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">Date & Time</ion-label>
-      <ion-datetime id="journalDateTime" display-format="MM/DD/YYYY h:mm A"></ion-datetime>
-    </ion-item>
+  <ion-label position="stacked">Description</ion-label>
+  <ion-textarea placeholder="Write your journal entry here..." [(ngModel)]="journalDescription"></ion-textarea>
 
-    <ion-item>
-        <ion-button expand="block" color="primary" onclick="saveNewEntry()">Save Entry</ion-button>
-    </ion-item>
+  <ion-label position="stacked">Date & Time</ion-label>
+  <ion-datetime display-format="YYYY-MM-DDTHH:mm" [(ngModel)]="journalDateTime"></ion-datetime>
 
-  </ion-list>
+  <ion-button expand="block" color="primary" (click)="saveData()">Save Entry</ion-button>
+
 </ion-content>

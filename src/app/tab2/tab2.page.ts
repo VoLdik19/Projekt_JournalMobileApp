@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { entryStorage } from 'src/app.constants';
+import { AppStorageService } from '../appStorage/appStorage.service';
+import { Entry } from '../model/entry';
 
 @Component({
   selector: 'app-tab2',
@@ -8,6 +11,13 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  entries: Array<Entry> = [];
+
+  constructor(private appStorageService: AppStorageService) {}
+
+  async ionViewDidEnter() {
+    this.entries = await this.appStorageService.get(entryStorage);
+  }
+  
 
 }
