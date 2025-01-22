@@ -13,15 +13,15 @@ export class Tab1Page {
 
   constructor(private appStorageService: AppStorageService) {}
 
-  journalDateTime: Date|undefined;
+  journalDateTime: string|undefined;
 
   journalDescription: string="";
 
   async saveData() {
 
     if (this.journalDateTime != undefined) {
-      var entry = new Entry(this.journalDateTime, this.journalDescription);
-      console.log("Entry: ", entry);
+      const datum: number = Date.parse(this.journalDateTime);
+      var entry = new Entry(new Date(datum), this.journalDescription);
 
       const value = await this.appStorageService.get(entryStorage);
         if(Array.isArray(value)){
@@ -31,8 +31,10 @@ export class Tab1Page {
           this.appStorageService.set(entryStorage, [entry]);
         }
     }
+    else{
+      
+    }
     
-
   }
 
 }

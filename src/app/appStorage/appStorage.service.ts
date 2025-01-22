@@ -27,4 +27,9 @@ export class AppStorageService {
   public set(key: string, value: any) {
     this._storage?.set(key, value)
   }
+
+  public clear() {
+    this._storage?.clear()
+  }
+
 }

@@ -12,7 +12,7 @@
   <ion-textarea placeholder="Write your journal entry here..." [(ngModel)]="journalDescription"></ion-textarea>
 
   <ion-label position="stacked">Date & Time</ion-label>
-  <ion-datetime display-format="YYYY-MM-DDTHH:mm" [(ngModel)]="journalDateTime"></ion-datetime>
+  <ion-datetime format="DD-MM-YYYY HH:mm" [(ngModel)]="journalDateTime"></ion-datetime>
 
   <ion-button expand="block" color="primary" (click)="saveData()">Save Entry</ion-button>
 
