@@ -30,7 +30,10 @@ export class Tab2Page {
   constructor(private appStorageService: AppStorageService) {}
 
   async ionViewDidEnter() {
-    this.entries = await this.appStorageService.get(entryStorage);
+    const a = await this.appStorageService.get(entryStorage);
+    if(Array.isArray(a)){
+      this.entries = a;
+    }
   }
 
   deleteAll(){
