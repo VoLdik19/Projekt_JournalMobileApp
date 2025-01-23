@@ -15,5 +15,17 @@
   <ion-datetime format="DD-MM-YYYY HH:mm" [(ngModel)]="journalDateTime"></ion-datetime>
 
   <ion-button expand="block" color="primary" (click)="saveData()">Save Entry</ion-button>
+  <ion-toast
+    [isOpen]="isSuccessOpen"
+    message="Entry saved successfully!"
+    [duration]="1000"
+    (didDismiss)="setSuccessOpen(false)"
+  ></ion-toast>
+  <ion-toast
+  [isOpen]="isErrorOpen"
+  message="Entry not saved as you have not entered any description or not set the time!"
+  [duration]="4000"
+  (didDismiss)="setErrorOpen(false)"
+></ion-toast>
 
 </ion-content>

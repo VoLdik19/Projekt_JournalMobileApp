@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import { DateSortPipe } from '../date-sort.pipe';
+import { FilterPinnedPipe } from '../filter-pinned.pipe';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { DateSortPipe } from '../date-sort.pipe';
     FormsModule,
     ExploreContainerComponentModule,
     Tab2PageRoutingModule,
-    DateSortPipe
+    DateSortPipe,
+    FilterPinnedPipe
   ],
   declarations: [Tab2Page]
 })

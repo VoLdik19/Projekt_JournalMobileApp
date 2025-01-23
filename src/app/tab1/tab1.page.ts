@@ -17,9 +17,21 @@ export class Tab1Page {
 
   journalDescription: string="";
 
+  isSuccessOpen = false;
+
+  isErrorOpen = false;
+
+  setSuccessOpen(isOpen: boolean) {
+    this.isSuccessOpen = isOpen;
+  }
+
+  setErrorOpen(isOpen: boolean) {
+    this.isErrorOpen = isOpen;
+  }
+
   async saveData() {
 
-    if (this.journalDateTime != undefined) {
+    if (this.journalDateTime != undefined && this.journalDescription != "") {
       const datum: number = Date.parse(this.journalDateTime);
       var entry = new Entry(new Date(datum), this.journalDescription);
 
@@ -30,9 +42,10 @@ export class Tab1Page {
         } else {
           this.appStorageService.set(entryStorage, [entry]);
         }
+        this.setSuccessOpen(true);
     }
     else{
-      
+      this.setErrorOpen(true);
     }
     
   }

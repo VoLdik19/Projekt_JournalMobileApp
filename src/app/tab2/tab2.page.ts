@@ -41,6 +41,34 @@ export class Tab2Page {
     this.entries = [];
   }
 
+  async pinEntry(entry: Entry){
+    var data = await this.appStorageService.get(entryStorage);
+    if(Array.isArray(data)){
+      for (var e of data){
+        if(e.DateTime.toString() == entry.DateTime.toString() && e.Description == entry.Description){
+          e.pinned = true;
+          await this.appStorageService.set(entryStorage, data);
+          this.entries = data;
+          break;
+        }
+      }
+    }
+  }
+
+  async unpinEntry(entry: Entry){
+    var data = await this.appStorageService.get(entryStorage);
+    if(Array.isArray(data)){
+      for (var e of data){
+        if(e.DateTime.toString() == entry.DateTime.toString() && e.Description == entry.Description){
+          e.pinned = false;
+          await this.appStorageService.set(entryStorage, data);
+          this.entries = data;
+          break;
+        }
+      }
+    }
+  }
+
   async deleteEntry(entry: Entry){
     var data = await this.appStorageService.get(entryStorage);
     if(Array.isArray(data)){
